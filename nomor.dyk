@@ -1,0 +1,7 @@
+biar angka = 5;
+
+misal (angka > 5) {
+  inulis "angka lebih besar dari 5";
+} lain {
+  inulis "angka kurang dari 5";
+}

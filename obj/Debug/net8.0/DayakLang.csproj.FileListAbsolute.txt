@@ -12,3 +12,4 @@ C:\Users\lenov\Downloads\DayakLang\obj\Debug\net8.0\refint\DayakLang.dll
 C:\Users\lenov\Downloads\DayakLang\obj\Debug\net8.0\DayakLang.pdb
 C:\Users\lenov\Downloads\DayakLang\obj\Debug\net8.0\DayakLang.genruntimeconfig.cache
 C:\Users\lenov\Downloads\DayakLang\obj\Debug\net8.0\ref\DayakLang.dll
+C:\Users\lenov\Downloads\DayakLang\obj\Debug\net8.0\DayakLang.sourcelink.json
