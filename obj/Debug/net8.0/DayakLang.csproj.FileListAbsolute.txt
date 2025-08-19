@@ -1,0 +1,14 @@
+C:\Users\lenov\Downloads\DayakLang\obj\Debug\net8.0\DayakLang.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lenov\Downloads\DayakLang\obj\Debug\net8.0\DayakLang.AssemblyInfoInputs.cache
+C:\Users\lenov\Downloads\DayakLang\obj\Debug\net8.0\DayakLang.AssemblyInfo.cs
+C:\Users\lenov\Downloads\DayakLang\obj\Debug\net8.0\DayakLang.csproj.CoreCompileInputs.cache
+C:\Users\lenov\Downloads\DayakLang\bin\Debug\net8.0\DayakLang.exe
+C:\Users\lenov\Downloads\DayakLang\bin\Debug\net8.0\DayakLang.deps.json
+C:\Users\lenov\Downloads\DayakLang\bin\Debug\net8.0\DayakLang.runtimeconfig.json
+C:\Users\lenov\Downloads\DayakLang\bin\Debug\net8.0\DayakLang.dll
+C:\Users\lenov\Downloads\DayakLang\bin\Debug\net8.0\DayakLang.pdb
+C:\Users\lenov\Downloads\DayakLang\obj\Debug\net8.0\DayakLang.dll
+C:\Users\lenov\Downloads\DayakLang\obj\Debug\net8.0\refint\DayakLang.dll
+C:\Users\lenov\Downloads\DayakLang\obj\Debug\net8.0\DayakLang.pdb
+C:\Users\lenov\Downloads\DayakLang\obj\Debug\net8.0\DayakLang.genruntimeconfig.cache
+C:\Users\lenov\Downloads\DayakLang\obj\Debug\net8.0\ref\DayakLang.dll

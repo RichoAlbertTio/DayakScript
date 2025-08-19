@@ -1,0 +1,3 @@
+// menampilkan nama
+jituh nama = "Richo Albert Tio";
+tulis "Halo, " + nama + "!"; 
