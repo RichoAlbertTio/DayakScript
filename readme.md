@@ -1,26 +1,27 @@
+# DYK: Bahasa Skrip Mini untuk Bahasa Dayak
+
 DYK adalah bahasa skrip mini yang fun untuk memperkenalkan kosakata Bahasa Dayak lewat pemrograman.
-Interpreter-nya ditulis dengan C# (.NET 8), sehingga mudah dipakai di console atau diintegrasikan ke Unity.
+Interpreter-nya ditulis dengan C# (.NET 8)
 
-Fitur Singkat
+## Fitur Singkat
 
-Insialiasi Variabel: jituh
-menampilkan teks: inulis
-Kondisional: misal … beken (alias if … else)
+* Insialiasi Variabel: `jituh`
+* Menampilkan teks: `inulis`
+* Kondisional: `misal`…`beken` (alias `if`…`else`)
+* Angka & string (dengan escape `\"` `\\` `\n` `\t`)
+* Operator: `+`, `-`, `*`, `/`, `==`, `!=`, `<`, `<=`, `>`, `>=`
+* Komentar: `//` …
 
-Angka & string (dengan escape \" \\ \n \t)
+## Contoh
 
-Operator: + - * / == != < <= > >=
+### Menampilkan nama
 
-Komentar: // …
-
-
-Contoh
-1) Menampilkan nama
+### Menampilkan nama
 // menampilkan nama
 jituh nama = "Richo Albert Tio";
 inulis "Halo nama saya, " + nama + "!";
 
-2) Percabangan misal / beken
+### Percabangan misal / beken
 // inisialisasi variabel
 jituh angka = 5;
 
@@ -32,6 +33,6 @@ misal (angka > 5) {
 }
 
 
-Cara Menjalankan
+### Cara Menjalankan
 CLI dayak (jika sudah di‐install sebagai .NET tool / exe)
 dayak file.dyk
