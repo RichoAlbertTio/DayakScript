@@ -1,0 +1,18 @@
+{
+  "if-else": {
+    "prefix": "misal",
+    "body": [
+      "misal (${1:kondisi}) {",
+      "  ${2:tulis} ${3:\"...\"};",
+      "} beken {",
+      "  ${4:tulis} ${5:\"...\"};",
+      "}"
+    ],
+    "description": "Blok misal/beken"
+  },
+  "print": {
+    "prefix": "tulis",
+    "body": ["tulis ${1:\"teks\"};"],
+    "description": "Cetak teks"
+  }
+}

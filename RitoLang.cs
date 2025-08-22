@@ -35,8 +35,8 @@ public class RitoLang
     struct Token
     {
         public TokenType Type;
-        public string Lexeme; // juga dipakai utk isi string literal
-        public double Number; // hanya utk Number
+        public string Lexeme; // untuk identifier & isi string literal
+        public double Number; // hanya untuk Number
         public int Pos;
         public Token(TokenType t, string lex, int pos, double num = 0)
         { Type = t; Lexeme = lex; Pos = pos; Number = num; }
@@ -119,7 +119,7 @@ public class RitoLang
                             break;
                         case ';': list.Add(new Token(TokenType.Semicolon, ";", pos)); break;
                         case '(': list.Add(new Token(TokenType.LParen, "(", pos)); break;
-                        case ')': list.Add(new Token(TokenType.RParen, ") ", pos)); break;
+                        case ')': list.Add(new Token(TokenType.RParen, ")", pos)); break; // fix: tanpa spasi
                         case '{': list.Add(new Token(TokenType.LBrace, "{", pos)); break;
                         case '}': list.Add(new Token(TokenType.RBrace, "}", pos)); break;
                         case '"': list.Add(ReadString(pos)); break;
@@ -153,13 +153,12 @@ public class RitoLang
 
         private Token ReadString(int pos)
         {
-            // posisi saat ini: sudah melewati tanda kutip pembuka
             var buf = new System.Text.StringBuilder();
             while (true)
             {
                 char c = Advance();
                 if (c == '\0') throw new Exception($"String belum ditutup di {pos}");
-                if (c == '"') break; // selesai
+                if (c == '"') break;
                 if (c == '\\')
                 {
                     char n = Advance();
@@ -170,7 +169,7 @@ public class RitoLang
                         case 'n': buf.Append('\n'); break;
                         case 't': buf.Append('\t'); break;
                         case 'r': buf.Append('\r'); break;
-                        default: buf.Append(n); break; // escape tak dikenal → literal saja
+                        default: buf.Append(n); break;
                     }
                 }
                 else
@@ -257,6 +256,11 @@ public class RitoLang
                 Stmt? elseStmt = null;
                 if (Match(TokenType.Else)) elseStmt = BlockOrSingle();
                 return new IfStmt(cond, thenStmt, elseStmt);
+            }
+            if (Match(TokenType.Else))
+            {
+                // Else/beken tanpa if sebelumnya
+                throw new Exception($"'else/beken/lain' tanpa 'if/misal' pada pos {_toks[_i - 1].Pos}");
             }
             if (Match(TokenType.LBrace))
             {
@@ -458,11 +462,13 @@ public class RitoLang
 
             // Alias lokal
             ["biar"]  = TokenType.Let,
-            ["jituh"] = TokenType.Let,     // alias tambahan
+            ["jituh"] = TokenType.Let,
             ["tulis"] = TokenType.Print,
             ["inulis"]= TokenType.Print,
             ["misal"] = TokenType.If,
             ["lain"]  = TokenType.Else,
+            ["beken"] = TokenType.Else,   // alias baru untuk else
+
             ["benar"] = TokenType.True,
             ["bujur"] = TokenType.True,
             ["salah"] = TokenType.False,

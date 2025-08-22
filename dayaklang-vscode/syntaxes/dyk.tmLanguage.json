@@ -1,0 +1,31 @@
+{
+  "scopeName": "source.dyk",
+  "patterns": [
+    { "name": "comment.line.double-slash.dyk", "match": "//.*$" },
+
+    {
+      "name": "string.quoted.double.dyk",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        { "name": "constant.character.escape.dyk", "match": "\\\\[\"\\\\ntr]" }
+      ]
+    },
+
+    { "name": "constant.numeric.dyk", "match": "\\b\\d+(?:\\.\\d+)?\\b" },
+
+    { "name": "keyword.control.dyk", "match": "\\b(?:biar|jituh|let|misal|if|beken|else)\\b" },
+    { "name": "support.function.print.dyk", "match": "\\b(?:tulis|inulis|print)\\b" },
+    { "name": "constant.language.boolean.dyk", "match": "\\b(?:benar|bujur|true|salah|sala|false)\\b" },
+
+    { "name": "keyword.operator.comparison.dyk", "match": "==|!=|<=|>=|<|>" },
+    { "name": "keyword.operator.arithmetic.dyk", "match": "\\+|\\-|\\*|/" },
+    { "name": "keyword.operator.assignment.dyk", "match": "=" },
+
+    { "name": "punctuation.terminator.statement.dyk", "match": ";" },
+    { "name": "punctuation.section.block.begin.dyk", "match": "\\{" },
+    { "name": "punctuation.section.block.end.dyk", "match": "\\}" },
+    { "name": "punctuation.section.parens.begin.dyk", "match": "\\(" },
+    { "name": "punctuation.section.parens.end.dyk", "match": "\\)" }
+  ]
+}

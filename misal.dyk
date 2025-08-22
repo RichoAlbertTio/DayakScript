@@ -1,7 +1,0 @@
-// if else
-jituh x = 0;
-misal (x >= 5) {
-  inulis x;          
-} lain {
-  inulis "kurang dari 5";
-}

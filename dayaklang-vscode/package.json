@@ -1,0 +1,28 @@
+{
+  "name": "dayaklang",
+  "displayName": "DYK Language Support",
+  "publisher": "ritio",
+  "version": "0.0.1",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Programming Languages"],
+  "contributes": {
+    "languages": [
+      {
+        "id": "dyk",
+        "aliases": ["DYK", "dyk"],
+        "extensions": [".dyk"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "dyk",
+        "scopeName": "source.dyk",
+        "path": "./syntaxes/dyk.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      { "language": "dyk", "path": "./snippets/dyk.json" }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+# .NET build artifacts
+bin/
+obj/
+*.user
+*.suo
+*.pdb
+*.cache
+*.log
+.vs/
+.vscode/
+*.DS_Store

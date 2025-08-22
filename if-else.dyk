@@ -1,0 +1,9 @@
+// inisialisasi variabel
+jituh angka = 5;
+
+// percabangan if-else
+misal (angka > 5) {
+  inulis "angka lebih besar dari 5";
+} beken {
+  inulis "angka kurang dari atau sama dengan 5";
+}
