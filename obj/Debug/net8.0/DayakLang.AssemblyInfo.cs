@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DayakLang")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55e44628c235729bf703d89f5258ce247034b561")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b90d26b86f7995cc38e05ba73e969ea40c57f49")]
 [assembly: System.Reflection.AssemblyProductAttribute("DayakLang")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DayakLang")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

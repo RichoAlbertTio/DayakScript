@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lenov\\Downloads\\DayakLang\\DayakLang.csproj": {}
+    "F:\\DayakLang\\DayakLang.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lenov\\Downloads\\DayakLang\\DayakLang.csproj": {
+    "F:\\DayakLang\\DayakLang.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lenov\\Downloads\\DayakLang\\DayakLang.csproj",
+        "projectUniqueName": "F:\\DayakLang\\DayakLang.csproj",
         "projectName": "DayakLang",
-        "projectPath": "C:\\Users\\lenov\\Downloads\\DayakLang\\DayakLang.csproj",
+        "projectPath": "F:\\DayakLang\\DayakLang.csproj",
         "packagesPath": "C:\\Users\\lenov\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lenov\\Downloads\\DayakLang\\obj\\",
+        "outputPath": "F:\\DayakLang\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lenov\\AppData\\Roaming\\NuGet\\NuGet.Config"
