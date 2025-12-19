@@ -1,18 +1,1 @@
-jituh i = 0;
-akan (i < 5) {
-    inulis "Iterasi for: " + i;
-    i = i + 1;
-}
-
-
-jituh j = 0;
-katika (j < 3) {
-    inulis "Iterasi while: " + j;
-    j = j + 1;
-}
-
-jituh k = 0;
-gawi {
-    inulis "Iterasi do-while: " + k;
-    k = k + 1;
-} katika (k < 2);
+inulis "halo, jituh tuh. bahasa pemprograman dayak";
