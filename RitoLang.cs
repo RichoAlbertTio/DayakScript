@@ -27,6 +27,7 @@ public class RitoLang
     {
         EOF, Identifier, Number, String,
         Let, Print, If, Else, True, False,
+        For, While, Do,
         Plus, Minus, Star, Slash,
         Equal, Semicolon, LParen, RParen, LBrace, RBrace,
         EqualEqual, BangEqual, Less, LessEqual, Greater, GreaterEqual
@@ -184,6 +185,7 @@ public class RitoLang
     // ===== AST =====
     abstract class Stmt { }
     class LetStmt : Stmt { public string Name; public Expr Value; public LetStmt(string n, Expr v) { Name = n; Value = v; } }
+    class AssignStmt : Stmt { public string Name; public Expr Value; public AssignStmt(string n, Expr v) { Name = n; Value = v; } }
     class PrintStmt : Stmt { public Expr Value; public PrintStmt(Expr v) { Value = v; } }
     class BlockStmt : Stmt { public List<Stmt> Body; public BlockStmt(List<Stmt> b) { Body = b; } }
     class IfStmt : Stmt
@@ -192,6 +194,24 @@ public class RitoLang
         public Stmt Then;
         public Stmt? Else;
         public IfStmt(Expr c, Stmt t, Stmt? e) { Cond = c; Then = t; Else = e; }
+    }
+    class ForStmt : Stmt
+    {
+        public Expr Cond;
+        public Stmt Body;
+        public ForStmt(Expr c, Stmt b) { Cond = c; Body = b; }
+    }
+    class WhileStmt : Stmt
+    {
+        public Expr Cond;
+        public Stmt Body;
+        public WhileStmt(Expr c, Stmt b) { Cond = c; Body = b; }
+    }
+    class DoWhileStmt : Stmt
+    {
+        public Stmt Body;
+        public Expr Cond;
+        public DoWhileStmt(Stmt b, Expr c) { Body = b; Cond = c; }
     }
 
     abstract class Expr { }
@@ -262,6 +282,32 @@ public class RitoLang
                 // Else/beken tanpa if sebelumnya
                 throw new Exception($"'else/beken/lain' tanpa 'if/misal' pada pos {_toks[_i - 1].Pos}");
             }
+            if (Match(TokenType.For))
+            {
+                Consume(TokenType.LParen, "Butuh '(' setelah for/akan");
+                var cond = Expression();
+                Consume(TokenType.RParen, "Butuh ')' setelah kondisi for");
+                var body = BlockOrSingle();
+                return new ForStmt(cond, body);
+            }
+            if (Match(TokenType.While))
+            {
+                Consume(TokenType.LParen, "Butuh '(' setelah while/katika");
+                var cond = Expression();
+                Consume(TokenType.RParen, "Butuh ')' setelah kondisi while");
+                var body = BlockOrSingle();
+                return new WhileStmt(cond, body);
+            }
+            if (Match(TokenType.Do))
+            {
+                var body = BlockOrSingle();
+                Consume(TokenType.While, "Butuh 'while/katika' setelah body do");
+                Consume(TokenType.LParen, "Butuh '(' setelah while/katika");
+                var cond = Expression();
+                Consume(TokenType.RParen, "Butuh ')' setelah kondisi");
+                Consume(TokenType.Semicolon, "Butuh ';' setelah do-while");
+                return new DoWhileStmt(body, cond);
+            }
             if (Match(TokenType.LBrace))
             {
                 var body = new List<Stmt>();
@@ -269,6 +315,24 @@ public class RitoLang
                 Consume(TokenType.RBrace, "Butuh '}' di akhir blok");
                 return new BlockStmt(body);
             }
+            
+            // Check for assignment: identifier = expression;
+            if (Check(TokenType.Identifier))
+            {
+                var nameTok = Advance();
+                if (Match(TokenType.Equal))
+                {
+                    var expr = Expression();
+                    Consume(TokenType.Semicolon, "Harus diakhiri ';'");
+                    return new AssignStmt(nameTok.Lexeme, expr);
+                }
+                else
+                {
+                    // Mundur karena bukan assignment
+                    _i--;
+                }
+            }
+            
             throw new Exception($"Statement tidak dikenal di pos {_toks[_i].Pos}");
         }
 
@@ -372,6 +436,11 @@ public class RitoLang
                 case LetStmt l:
                     _env[l.Name] = Eval(l.Value);
                     break;
+                case AssignStmt a:
+                    if (!_env.ContainsKey(a.Name))
+                        throw new Exception($"Variabel '{a.Name}' belum dideklarasikan");
+                    _env[a.Name] = Eval(a.Value);
+                    break;
                 case PrintStmt p:
                     _out(Eval(p.Value).ToString());
                     break;
@@ -382,6 +451,25 @@ public class RitoLang
                     var cond = Eval(iff.Cond);
                     if (IsTruthy(cond)) Execute(iff.Then);
                     else if (iff.Else != null) Execute(iff.Else);
+                    break;
+                case ForStmt forStmt:
+                    while (IsTruthy(Eval(forStmt.Cond)))
+                    {
+                        Execute(forStmt.Body);
+                    }
+                    break;
+                case WhileStmt whileStmt:
+                    while (IsTruthy(Eval(whileStmt.Cond)))
+                    {
+                        Execute(whileStmt.Body);
+                    }
+                    break;
+                case DoWhileStmt doWhileStmt:
+                    do
+                    {
+                        Execute(doWhileStmt.Body);
+                    }
+                    while (IsTruthy(Eval(doWhileStmt.Cond)));
                     break;
                 default:
                     throw new Exception("Stmt tidak didukung");
@@ -458,6 +546,7 @@ public class RitoLang
             // Inggris standar
             ["let"] = TokenType.Let, ["print"] = TokenType.Print,
             ["if"]  = TokenType.If,  ["else"]  = TokenType.Else,
+            ["for"] = TokenType.For, ["while"] = TokenType.While, ["do"] = TokenType.Do,
             ["true"] = TokenType.True, ["false"] = TokenType.False,
 
             // Alias lokal
@@ -468,6 +557,9 @@ public class RitoLang
             ["misal"] = TokenType.If,
             ["lain"]  = TokenType.Else,
             ["beken"] = TokenType.Else,   // alias baru untuk else
+            ["akan"]  = TokenType.For,    // for loop
+            ["katika"] = TokenType.While, // while loop  
+            ["gawi"]  = TokenType.Do,     // do-while loop
 
             ["benar"] = TokenType.True,
             ["bujur"] = TokenType.True,

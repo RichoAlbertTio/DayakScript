@@ -1,0 +1,24 @@
+// menampilkan nama
+jituh nama = "Richo Albert Tio";
+inulis "Halo nama saya, " + nama + "!";
+
+// for loop - akan
+biar i = 0;
+akan (i < 10) {
+    inulis "For loop: " + i;
+    i = i + 1;
+}
+
+// while - katika
+biar j = 0;
+katika (j < 10) {
+    inulis "While loop: " + j;
+    j = j + 1;
+}
+
+// do while - gawi...katika
+biar k = 0;
+gawi {
+    inulis "Do-while loop: " + k;
+    k = k + 1;
+} katika (k < 10);

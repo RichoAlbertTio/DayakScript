@@ -1,3 +1,0 @@
-// menampilkan nama
-jituh nama = "Richo Albert Tio";
-inulis "Halo nama saya, " + nama + "!"; 

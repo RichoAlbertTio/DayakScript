@@ -1,0 +1,27 @@
+// Contoh perulangan dalam DayakLang
+
+// For loop - akan
+tulis "=== For Loop (akan) ===";
+biar i = 0;
+akan (i < 5) {
+    tulis "Iterasi for: " + i;
+    i = i + 1;
+}
+
+// While loop - katika  
+tulis "=== While Loop (katika) ===";
+biar j = 0;
+katika (j < 3) {
+    tulis "Iterasi while: " + j;
+    j = j + 1;
+}
+
+// Do-while loop - gawi...katika
+tulis "=== Do-While Loop (gawi...katika) ===";
+biar k = 0;
+gawi {
+    tulis "Iterasi do-while: " + k;
+    k = k + 1;
+} katika (k < 2);
+
+tulis "Semua perulangan selesai!";

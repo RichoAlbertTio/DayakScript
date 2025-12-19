@@ -1,0 +1,11 @@
+jituh a = 5;
+jituh b = 2;
+
+jituh tambah = a + b;
+jituh kurang = a - b;
+jituh kali = a * b;
+jituh bagi = a / b;
+inulis "hasil " + a + "+" + b + " adalah " + tambah;
+inulis "hasil " + a + "-" + b + " adalah " + kurang;
+inulis "hasil " + a + "x" + b + " adalah " + kali;
+inulis "hasil " + a + "/" + b + " adalah " + bagi;
