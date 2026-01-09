@@ -1,6 +1,6 @@
-# DYK: Bahasa Skrip Mini untuk Bahasa Dayak
+# Dayak Script: Bahasa Skrip Mini untuk Bahasa Dayak
 
-DYK adalah bahasa skrip mini yang fun untuk memperkenalkan kosakata Bahasa Dayak lewat pemrograman.
+Dayak Script adalah bahasa skrip mini yang fun untuk memperkenalkan kosakata Bahasa Dayak lewat pemrograman.
 Interpreter-nya ditulis dengan C# (.NET 8)
 
 ## Kosakata Bahasa Dayak
